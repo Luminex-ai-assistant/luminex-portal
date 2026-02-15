@@ -4,12 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Luminex Portal - Your centralized dashboard for managing and visualizing data" />
-    <meta name="theme-color" content="#0f172a" />
     <title>Luminex Portal</title>
+    <script type="module" crossorigin src="/assets/index-Cqqk2RrU.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/router-B804q1qX.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-nMGjuvrb.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B1zCP9Uk.css">
   </head>
   <body class="dark">
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+        document.body.innerHTML = '<div style="padding:2rem;color:#ef4444;font-family:sans-serif;"><h1>Error Loading App</h1><pre>' + e.error + '</pre></div>';
+      });
+    </script>
   </body>
 </html>
