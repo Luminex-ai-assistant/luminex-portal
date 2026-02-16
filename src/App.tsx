@@ -1,35 +1,8 @@
-import { useState, useEffect } from 'react';
 import { RouterProvider, createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
 import { useAuthStore } from '@/stores/authStore';
+import { AppShell } from '@/components/layout/AppShell';
 import { LoginPage } from '@/features/auth/LoginPage';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
-
-// Simple error fallback
-function ErrorFallback({ error }: { error: Error }) {
-  return (
-    <div style={{ padding: '2rem', color: '#ef4444', background: '#0f172a', minHeight: '100vh' }}>
-      <h1>Error Loading App</h1>
-      <pre>{error.message}</pre>
-      <pre>{error.stack}</pre>
-    </div>
-  );
-}
-
-// Safe wrapper that catches errors
-function SafeRoute({ children }: { children: React.ReactNode }) {
-  const [error, setError] = useState<Error | null>(null);
-  
-  useEffect(() => {
-    try {
-      // Try to render
-    } catch (e) {
-      setError(e as Error);
-    }
-  }, []);
-  
-  if (error) return <ErrorFallback error={error} />;
-  return <>{children}</>;
-}
 
 // Protected route
 function ProtectedRoute() {
@@ -51,23 +24,19 @@ const router = createBrowserRouter([
   {
     element: <ProtectedRoute />,
     children: [
-      { path: '/', element: <Navigate to="/dashboard" replace /> },
-      { path: '/dashboard', element: <DashboardPage /> },
+      {
+        element: <AppShell />,
+        children: [
+          { path: '/', element: <Navigate to="/dashboard" replace /> },
+          { path: '/dashboard', element: <DashboardPage /> },
+        ],
+      },
     ],
   },
 ]);
 
 function App() {
-  const [error, setError] = useState<Error | null>(null);
-  
-  // Catch any errors during router initialization
-  try {
-    return <RouterProvider router={router} />;
-  } catch (e) {
-    if (!error) setError(e as Error);
-    if (error) return <ErrorFallback error={error} />;
-    return null;
-  }
+  return <RouterProvider router={router} />;
 }
 
 export default App;
