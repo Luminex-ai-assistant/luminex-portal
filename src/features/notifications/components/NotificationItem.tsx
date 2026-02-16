@@ -2,7 +2,8 @@ import * as React from 'react';
 import { AtSign, UserPlus, Clock, MessageCircle, Info, Bell, Check, Trash2, X } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { cn } from '@/lib/utils';
-import type { Notification, NotificationType } from '../types';
+import type { Notification } from '../types';
+import { NotificationType } from '../types';
 
 interface NotificationItemProps {
   notification: Notification;
