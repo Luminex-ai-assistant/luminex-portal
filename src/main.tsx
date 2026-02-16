@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/api/cache';
+import { RootErrorBoundary } from '@/lib/errors/boundaries';
 import App from '@/App';
 import '@/styles/globals.css';
 
@@ -15,7 +16,9 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <RootErrorBoundary>
+        <App />
+      </RootErrorBoundary>
     </QueryClientProvider>
   </StrictMode>
 );

@@ -5,11 +5,7 @@
 [build.environment]
   NODE_VERSION = "22"
 
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
+# SPA redirect - must be LAST
 [[redirects]]
   from = "/*"
   to = "/index.html"

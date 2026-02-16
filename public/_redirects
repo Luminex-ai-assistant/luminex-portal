@@ -1,0 +1,5 @@
+# SPA redirect rules
+# Assets are served automatically, no need to redirect them
+
+# Redirect all routes to index.html for client-side routing
+/*    /index.html   200
