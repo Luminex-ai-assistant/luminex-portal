@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminex Command Portal</title>
+    <link rel="stylesheet" href="landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Landing Container -->
+    <div class="landing-container">
+        <!-- Header -->
+        <header class="landing-header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <span>LUMINEX COMMAND</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="landing-main">
+            <div class="hero">
+                <h1 class="hero-title">Welcome to Omar's AI Assistant Portal</h1>
+                <p class="hero-subtitle">A secure collaboration environment for project management and intelligent automation.</p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="enterPortalBtn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Enter Portal
+                    </button>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="security-panel">
+                <div class="security-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security & Privacy Notice</h3>
+                </div>
+                <div class="security-content">
+                    <div class="security-item">
+                        <i class="fas fa-lock"></i>
+                        <div>
+                            <strong>Private Workspace</strong>
+                            <p>This is an invitation-only secured environment. All access is logged and monitored.</p>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-user-shield"></i>
+                        <div>
+                            <strong>Access Control</strong>
+                            <p>You can only view and manage projects you have been explicitly added to by the administrator.</p>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-eye"></i>
+                        <div>
+                            <strong>Activity Monitoring</strong>
+                            <p>All actions, mentions (@username), and task updates are tracked for accountability.</p>
+                        </div>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-key"></i>
+                        <div>
+                            <strong>Password Security</strong>
+                            <p>Change your password regularly. Do not share credentials. Contact Omar for access issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Preview -->
+            <div class="features-preview">
+                <div class="feature-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Project Management</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Task Tracking</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Scheduled Jobs</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <p>© 2026 Luminex Command. Private Collaboration Portal.</p>
+            <p class="footer-small">Unauthorized access is prohibited. All activity is logged.</p>
+        </footer>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign In</h2>
+                <button class="btn-close" id="closeLogin">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="login-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="loginUsername" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                    </div>
+                    <div class="login-error" id="loginError"></div>
+                    <button class="btn btn-primary btn-block" id="loginSubmit">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p class="login-help">Forgot password? Contact Omar for assistance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="landing.js"></script>
+</body>
+</html>

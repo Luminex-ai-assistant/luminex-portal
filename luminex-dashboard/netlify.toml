@@ -1,0 +1,40 @@
+[build]
+  publish = "."
+  command = "echo 'No build step required'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Only protect the dashboard route
+[[edge_functions]]
+  path = "/dashboard/*"
+  function = "auth"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[context.production]
+  environment = { NODE_ENV = "production" }
+
+# Root goes to landing page
+[[redirects]]
+  from = "/"
+  to = "/landing.html"
+  status = 200
+
+# Dashboard route
+[[redirects]]
+  from = "/dashboard"
+  to = "/index.html"
+  status = 200
+
+# SPA fallback for dashboard
+[[redirects]]
+  from = "/dashboard/*"
+  to = "/index.html"
+  status = 200
