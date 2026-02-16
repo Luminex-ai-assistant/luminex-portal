@@ -4,7 +4,8 @@ import { useAuthStore } from '@/stores/authStore';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/Card';
-import type { User, UserRole } from '@/types/user';
+import type { User } from '@/types/user';
+import { UserRole } from '@/types/user';
 
 // Mock user for development
 const MOCK_USER: User = {
