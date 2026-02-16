@@ -10,7 +10,7 @@ function ProtectedRoute() {
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
-// Public route
+// Public route  
 function PublicRoute() {
   const { isAuthenticated } = useAuthStore();
   return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
@@ -29,10 +29,14 @@ const router = createBrowserRouter([
         children: [
           { path: '/', element: <Navigate to="/dashboard" replace /> },
           { path: '/dashboard', element: <DashboardPage /> },
+          { path: '/templates', element: <div style={{padding: '2rem'}}><h1>Templates</h1><p>Coming soon...</p></div> },
+          { path: '/automations', element: <div style={{padding: '2rem'}}><h1>Automations</h1><p>Coming soon...</p></div> },
         ],
       },
     ],
   },
+  // Fallback for any unmatched routes
+  { path: '*', element: <Navigate to="/dashboard" replace /> },
 ]);
 
 function App() {
