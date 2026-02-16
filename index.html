@@ -7,9 +7,58 @@
     <meta name="description" content="Luminex Portal - Your centralized dashboard" />
     <meta name="theme-color" content="#0f172a" />
     <title>Luminex Portal</title>
+    <style>
+      body {
+        margin: 0;
+        background: #0f172a;
+        color: #f8fafc;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      #loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #0f172a;
+        z-index: 9999;
+      }
+      #loading h1 {
+        color: #6366f1;
+        margin: 0 0 0.5rem 0;
+      }
+      #loading p {
+        color: #94a3b8;
+        margin: 0;
+      }
+      #root:empty + #loading {
+        display: flex;
+      }
+      #root:not(:empty) + #loading {
+        display: none;
+      }
+    </style>
   </head>
   <body class="dark">
     <div id="root"></div>
+    <div id="loading">
+      <h1>🚀 Luminex Portal</h1>
+      <p>Loading...</p>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Fallback: if app doesn't load in 10 seconds, show error
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        var loading = document.getElementById('loading');
+        if (root && root.children.length === 0 && loading) {
+          loading.innerHTML = '<h1>⚠️ Failed to Load</h1><p style="color:#ef4444">The app failed to initialize.</p><p style="color:#64748b;font-size:0.875rem;">Check browser console for errors.</p>';
+        }
+      }, 10000);
+    </script>
   </body>
 </html>
