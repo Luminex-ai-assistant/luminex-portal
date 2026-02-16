@@ -1,50 +1,33 @@
-import { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/lib/api/cache';
-import App from '@/App';
-import '@/styles/globals.css';
 
-// Debug: Log initialization
-console.log('🚀 Portal starting...');
-
-try {
-  const rootElement = document.getElementById('root');
-  if (!rootElement) {
-    throw new Error('Root element not found');
-  }
-
-  console.log('✅ Root element found');
-
+// Minimal test - just render a div
+const rootElement = document.getElementById('root');
+if (rootElement) {
   const root = createRoot(rootElement);
-  
   root.render(
-    <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <App />
-      </QueryClientProvider>
-    </StrictMode>
-  );
-  
-  console.log('✅ React app rendered');
-} catch (error) {
-  console.error('❌ Failed to start app:', error);
-  document.body.innerHTML = `
-    <div style="
-      padding: 2rem;
-      font-family: system-ui, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
-      min-height: 100vh;
-    ">
-      <h1 style="color: #ef4444;">Failed to Load Portal</h1>
-      <pre style="
-        background: #1e293b;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        overflow: auto;
-        color: #94a3b8;
-      ">${error instanceof Error ? error.message : String(error)}</pre>
+    <div style={{
+      padding: '2rem',
+      fontFamily: 'system-ui, sans-serif',
+      background: '#0f172a',
+      color: '#f8fafc',
+      minHeight: '100vh'
+    }}>
+      <h1 style={{ color: '#6366f1' }}>✅ Luminex Portal Loaded!</h1>
+      <p>React is working. The full app will be restored once this test passes.</p>
+      <button onClick={() => window.location.reload()} style={{
+        padding: '0.75rem 1.5rem',
+        background: '#6366f1',
+        color: 'white',
+        border: 'none',
+        borderRadius: '0.375rem',
+        cursor: 'pointer',
+        marginTop: '1rem'
+      }}>
+        Reload
+      </button>
     </div>
-  `;
+  );
+} else {
+  document.body.innerHTML = '<div style="padding:2rem;color:#ef4444">Root element not found</div>';
 }
