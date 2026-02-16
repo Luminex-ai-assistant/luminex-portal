@@ -1,1 +1,6 @@
-/* /index.html 200
+# This ensures the SPA works correctly
+# Don't redirect static assets (JS, CSS, images)
+/assets/*  /assets/:splat  200!
+
+# Redirect everything else to index.html for client-side routing
+/*    /index.html   200
